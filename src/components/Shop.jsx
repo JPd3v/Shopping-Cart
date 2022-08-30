@@ -4,13 +4,13 @@ import ShopListItem from './ShopListItem';
 export default function Shop() {
   const [items, setItems] = useState([]);
 
-  async function fetchData() {
-    const data = await fetch('https://fakestoreapi.com/products');
-    const result = await data.json();
-    setItems(result);
+  async function fetchItemsData() {
+    const response = await fetch('https://fakestoreapi.com/products');
+    const itemsData = await response.json();
+    setItems(itemsData);
   }
   useEffect(() => {
-    fetchData();
+    fetchItemsData();
   }, []);
 
   const itemsElements = items.map((item) => (
