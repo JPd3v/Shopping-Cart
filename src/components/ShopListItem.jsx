@@ -5,7 +5,8 @@ export default function ShopListItem({ item }) {
   return (
     <Link to={`/shop/${id}`}>
       <img src={image} alt={title} />
-      <p>{title}</p>
+
+      <p className="shop-list-item-name">{title}</p>
       <p>{`$ ${price}`}</p>
     </Link>
   );

@@ -37,27 +37,29 @@ export default function ItemDetails({ addCartItem }) {
   }
 
   return (
-    <div>
+    <div className="item-details">
       {item && (
-        <div>
+        <>
           <div>
             <img src={item.image} alt={item.title} />
           </div>
-          <div>{item.title}</div>
-          <div>{item.description}</div>
-          <div>{item.category}</div>
-          <div>${item.price}</div>
-          <form onSubmit={(event) => handleSubmit(event)}>
-            <input
-              type="number"
-              name="itemQuantity"
-              min="1"
-              value={input.itemQuantity}
-              onChange={(event) => handleInput(event)}
-            />
-            <button type="submit">add to your cart</button>
-          </form>
-        </div>
+          <div className="item-details-information">
+            <div>{item.title}</div>
+            <div>{item.description}</div>
+            <div>{item.category}</div>
+            <div>${item.price}</div>
+            <form onSubmit={(event) => handleSubmit(event)}>
+              <input
+                type="number"
+                name="itemQuantity"
+                min="1"
+                value={input.itemQuantity}
+                onChange={(event) => handleInput(event)}
+              />
+              <button type="submit">add to your cart</button>
+            </form>
+          </div>
+        </>
       )}
     </div>
   );

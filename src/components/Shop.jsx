@@ -13,10 +13,13 @@ export default function Shop() {
     fetchItemsData();
   }, []);
 
-  const itemsElements = items.map((item) => (
-    <div key={item.id} className="item">
-      <ShopListItem item={item} />
+  return (
+    <div className="items-container">
+      {items.map((item) => (
+        <div key={item.id} className="item">
+          <ShopListItem item={item} />
+        </div>
+      ))}
     </div>
-  ));
-  return <div>{itemsElements}</div>;
+  );
 }

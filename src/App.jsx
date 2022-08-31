@@ -30,9 +30,89 @@ function App() {
     );
   }
 
+  // function changeItemQuantity(item) {
+  //   console.log(item);
+  //   return setCartItems((prevItems) =>
+  //     prevItems.map((element) =>
+  //       element.id === item.id
+  //         ? {
+  //             ...element,
+  //             itemQuantity: item.itemQuantity,
+  //           }
+  //         : element
+  //     )
+  //   );
+  // }
+
+  function incrementItemQuantity(id) {
+    console.log('asdsadsa');
+    setCartItems((prevItems) =>
+      prevItems.map((element) =>
+        element.id === id
+          ? {
+              ...element,
+              itemQuantity: element.itemQuantity + 1,
+            }
+          : element
+      )
+    );
+  }
+
+  function decrementItemQuantity(id) {
+    setCartItems((prevItems) =>
+      prevItems.map((element) =>
+        element.id === id
+          ? {
+              ...element,
+              itemQuantity: element.itemQuantity - 1,
+            }
+          : element
+      )
+    );
+  }
+
+  // import { useState, } from 'react';
+
+  // export default function CartItem({ item,}) {
+  //   const [input, setInput] = useState({ quantity: item.itemQuantity });
+
+  //   function handleChange(event) {
+  //     const { name, value } = event.target;
+
+  //     console.log(input.quantity);
+  //     setInput((prevInput) => ({ ...prevInput, [name]: value }));
+  //   }
+
+  //   function handleFormChange() {
+  //     console.log('asd');
+  //   }
+  // changeItemQuantity({ id: item.id, itemQuantity: input.quantity })
+  // useEffect(() => setInput({ quantity: item.itemQuantity }), [item]);
+
+  //   return (
+  //     <div className="cart">
+  //       <img src={item.image} alt={item.title} />
+  //       <p>{item.title}</p>
+  //       <p>${item.price}</p>
+  //       <form onChange={handleFormChange()}>
+  //         <input
+  //           type="number"
+  //           value={input.quantity}
+  //           name="quantity"
+  //           onChange={(event) => handleChange(event)}
+  //         />
+  //       </form>
+  //     </div>
+  //   );
+  // }
+
   return (
     <div className="App">
-      <Header items={cartItems} />
+      <Header
+        items={cartItems}
+        incrementItemQuantity={(id) => incrementItemQuantity(id)}
+        decrementItemQuantity={(id) => decrementItemQuantity(id)}
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/shop">
