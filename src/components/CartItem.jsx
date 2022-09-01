@@ -1,3 +1,5 @@
+import { IoCloseOutline } from 'react-icons/io5';
+
 export default function CartItem({
   item,
   incrementItemQuantity,
@@ -13,19 +15,26 @@ export default function CartItem({
   }
 
   return (
-    <div className="cart">
+    <div className="cart-item">
       <img src={item.image} alt={item.title} />
-      <p>{item.title}</p>
-      <p>${item.price}</p>
-      <button
-        type="button"
-        onClick={() => handleDecrement(item.id, item.itemQuantity)}
-      >
-        -
-      </button>
-      <div>{item.itemQuantity}</div>
-      <button type="button" onClick={() => handleIncrement(item.id)}>
-        +
+      <div className="cart-item-information">
+        <p>{item.title}</p>
+        <p>${item.price}</p>
+        <div className="cart-item-quantity-controller">
+          <button
+            type="button"
+            onClick={() => handleDecrement(item.id, item.itemQuantity)}
+          >
+            -
+          </button>
+          <div>{item.itemQuantity}</div>
+          <button type="button" onClick={() => handleIncrement(item.id)}>
+            +
+          </button>
+        </div>
+      </div>
+      <button type="button" className="cart-item-delete-button">
+        <IoCloseOutline />
       </button>
     </div>
   );

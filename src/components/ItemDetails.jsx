@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { MdAddShoppingCart } from 'react-icons/md';
 
 export default function ItemDetails({ addCartItem }) {
   const [item, setItem] = useState(null);
@@ -37,16 +38,16 @@ export default function ItemDetails({ addCartItem }) {
   }
 
   return (
-    <div className="item-details">
+    <div className="item-details-wrapper">
       {item && (
-        <>
-          <div>
+        <div className="item-details">
+          <div className="item-details-img-wrapper">
             <img src={item.image} alt={item.title} />
           </div>
           <div className="item-details-information">
             <div>{item.title}</div>
-            <div>{item.description}</div>
             <div>{item.category}</div>
+            <div>{item.description}</div>
             <div>${item.price}</div>
             <form onSubmit={(event) => handleSubmit(event)}>
               <input
@@ -56,10 +57,12 @@ export default function ItemDetails({ addCartItem }) {
                 value={input.itemQuantity}
                 onChange={(event) => handleInput(event)}
               />
-              <button type="submit">add to your cart</button>
+              <button type="submit" className="item-details-add-to-cart">
+                add to your cart <MdAddShoppingCart />
+              </button>
             </form>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

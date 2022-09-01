@@ -1,9 +1,11 @@
+import { IoCloseOutline } from 'react-icons/io5';
 import CartItem from './CartItem';
 
 export default function Cart({
   items,
   incrementItemQuantity,
   decrementItemQuantity,
+  closeCartModal,
 }) {
   const reducer = items.reduce(
     (acc, item) =>
@@ -11,18 +13,32 @@ export default function Cart({
     0
   );
   return (
-    <div>
-      <div>
-        {items.map((item) => (
-          <CartItem
-            key={item.id}
-            item={item}
-            incrementItemQuantity={(id) => incrementItemQuantity(id)}
-            decrementItemQuantity={(id) => decrementItemQuantity(id)}
-          />
-        ))}
+    <div className="cart-modal">
+      <div className="cart">
+        <div className="cart-items-container">
+          <button
+            type="button"
+            className="button-close-cart"
+            onClick={closeCartModal}
+          >
+            <IoCloseOutline />
+          </button>
+          {items.map((item) => (
+            <CartItem
+              key={item.id}
+              item={item}
+              incrementItemQuantity={(id) => incrementItemQuantity(id)}
+              decrementItemQuantity={(id) => decrementItemQuantity(id)}
+            />
+          ))}
+        </div>
+        <div className="cart-total-amount">
+          ${Math.round(reducer * 100) / 100}
+          <button type="button" className="button-Proceed-to-pay">
+            Proceed to pay
+          </button>
+        </div>
       </div>
-      <div>${Math.round(reducer * 100) / 100}</div>
     </div>
   );
 }
