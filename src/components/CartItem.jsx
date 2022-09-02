@@ -4,6 +4,7 @@ export default function CartItem({
   item,
   incrementItemQuantity,
   decrementItemQuantity,
+  deleteItemFromCart,
 }) {
   function handleIncrement(id) {
     console.log(id);
@@ -12,6 +13,10 @@ export default function CartItem({
   function handleDecrement(id, Currentquantity) {
     if (Currentquantity <= 1) return;
     decrementItemQuantity(id);
+  }
+
+  function handleItemDelete(id) {
+    deleteItemFromCart(id);
   }
 
   return (
@@ -33,7 +38,11 @@ export default function CartItem({
           </button>
         </div>
       </div>
-      <button type="button" className="cart-item-delete-button">
+      <button
+        type="button"
+        className="cart-item-delete-button"
+        onClick={() => handleItemDelete(item.id)}
+      >
         <IoCloseOutline />
       </button>
     </div>

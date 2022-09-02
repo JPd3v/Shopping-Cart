@@ -6,6 +6,7 @@ export default function Cart({
   incrementItemQuantity,
   decrementItemQuantity,
   closeCartModal,
+  deleteItemFromCart,
 }) {
   const reducer = items.reduce(
     (acc, item) =>
@@ -29,11 +30,12 @@ export default function Cart({
               item={item}
               incrementItemQuantity={(id) => incrementItemQuantity(id)}
               decrementItemQuantity={(id) => decrementItemQuantity(id)}
+              deleteItemFromCart={(id) => deleteItemFromCart(id)}
             />
           ))}
         </div>
         <div className="cart-total-amount">
-          ${Math.round(reducer * 100) / 100}
+          Total: ${Math.round(reducer * 100) / 100}
           <button type="button" className="button-Proceed-to-pay">
             Proceed to pay
           </button>

@@ -45,10 +45,10 @@ export default function ItemDetails({ addCartItem }) {
             <img src={item.image} alt={item.title} />
           </div>
           <div className="item-details-information">
-            <div>{item.title}</div>
-            <div>{item.category}</div>
-            <div>{item.description}</div>
-            <div>${item.price}</div>
+            <h6>{item.title}</h6>
+            <p>{item.category}</p>
+            <p>{item.description}</p>
+            <p>${item.price}</p>
             <form onSubmit={(event) => handleSubmit(event)}>
               <input
                 type="number"

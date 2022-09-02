@@ -30,6 +30,10 @@ function App() {
     );
   }
 
+  function deleteItemFromCart(id) {
+    setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
+  }
+
   // function changeItemQuantity(item) {
   //   console.log(item);
   //   return setCartItems((prevItems) =>
@@ -112,6 +116,7 @@ function App() {
         items={cartItems}
         incrementItemQuantity={(id) => incrementItemQuantity(id)}
         decrementItemQuantity={(id) => decrementItemQuantity(id)}
+        deleteItemFromCart={(id) => deleteItemFromCart(id)}
       />
       <Routes>
         <Route path="/" element={<Home />} />
