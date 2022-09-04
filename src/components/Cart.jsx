@@ -18,6 +18,7 @@ export default function Cart({
       <div className="cart">
         <div className="cart-items-container">
           <button
+            aria-label="close-cart"
             type="button"
             className="button-close-cart"
             onClick={closeCartModal}
@@ -35,7 +36,7 @@ export default function Cart({
           ))}
         </div>
         <div className="cart-total-amount">
-          Total: ${Math.round(reducer * 100) / 100}
+          <div>Total: ${reducer}</div>
           <button type="button" className="button-Proceed-to-pay">
             Proceed to pay
           </button>
