@@ -30,6 +30,7 @@ export default function Header({
         <Link to="/">Home</Link>
         <Link to="/shop">Shop</Link>
         <button
+          aria-label="open-cart"
           type="button"
           className="button-open-cart"
           onClick={openCartModal}

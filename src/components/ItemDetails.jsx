@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { MdAddShoppingCart } from 'react-icons/md';

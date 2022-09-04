@@ -7,7 +7,6 @@ export default function CartItem({
   deleteItemFromCart,
 }) {
   function handleIncrement(id) {
-    console.log(id);
     incrementItemQuantity(id);
   }
   function handleDecrement(id, Currentquantity) {
@@ -20,7 +19,7 @@ export default function CartItem({
   }
 
   return (
-    <div className="cart-item">
+    <div className="cart-item" data-testid="cart-item">
       <img src={item.image} alt={item.title} />
       <div className="cart-item-information">
         <p>{item.title}</p>
@@ -39,6 +38,7 @@ export default function CartItem({
         </div>
       </div>
       <button
+        aria-label="delete-item"
         type="button"
         className="cart-item-delete-button"
         onClick={() => handleItemDelete(item.id)}

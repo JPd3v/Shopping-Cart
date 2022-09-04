@@ -1,5 +1,4 @@
-import { render, screen } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
+import { act, render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { vi } from 'vitest';
 import userEvent from '@testing-library/user-event';
@@ -11,12 +10,6 @@ let fakeItem = {
   description: 'a fake watch',
   price: '$55.99',
 };
-
-// global.fetch = vi.fn(() =>
-//   Promise.resolve({
-//     json: () => Promise.resolve(fakeItem),
-//   })
-// );
 
 beforeEach(() => {
   window.fetch = vi.fn(() => {
@@ -72,11 +65,11 @@ describe(
 
     expect(quantityInput.value).toBe('123');
   }),
-  test('adds item to the car is called when button clicked', async () => {
+  test('adds item to the cart is called when button is clicked', async () => {
     const addCartItem = vi.fn();
 
     await act(async () => {
-      render(<ItemDetails addCartItem={addCartItem} />);
+      render(<ItemDetails addCartItem={(data) => addCartItem(data)} />);
     });
 
     const addTocartButton = screen.getByText('add to your cart');
@@ -84,8 +77,12 @@ describe(
     await userEvent.click(addTocartButton);
 
     expect(addTocartButton).toBeInTheDocument();
-    expect(addCartItem).toHaveBeenCalled();
-
-    screen.debug();
+    expect(addCartItem).toHaveBeenCalledWith({
+      category: 'jewelery',
+      description: 'a fake watch',
+      itemQuantity: 1,
+      price: '55.99',
+      title: 'watch',
+    });
   })
 );
