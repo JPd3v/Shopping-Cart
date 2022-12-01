@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { TiShoppingCart } from 'react-icons/ti';
-import Cart from './Cart';
+import Cart from '../Cart/Cart';
 
 export default function Header({
   items,

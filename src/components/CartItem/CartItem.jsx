@@ -1,4 +1,5 @@
 import { IoCloseOutline } from 'react-icons/io5';
+import { Link } from 'react-router-dom';
 
 export default function CartItem({
   item,
@@ -19,20 +20,27 @@ export default function CartItem({
   }
 
   return (
-    <div className="cart-item" data-testid="cart-item">
-      <img src={item.image} alt={item.title} />
+    <li className="cart-item" data-testid="cart-item">
+      <img src={item.image} alt="" />
       <div className="cart-item-information">
-        <p>{item.title}</p>
+        <Link data-testid="list-item" to={`/shop/${item.id}`}>
+          {item.title}
+        </Link>
         <p>${item.price}</p>
         <div className="cart-item-quantity-controller">
           <button
             type="button"
             onClick={() => handleDecrement(item.id, item.itemQuantity)}
+            aria-label="Decrement item quantity"
           >
             -
           </button>
-          <div>{item.itemQuantity}</div>
-          <button type="button" onClick={() => handleIncrement(item.id)}>
+          <p aria-live="assertive">{item.itemQuantity}</p>
+          <button
+            type="button"
+            onClick={() => handleIncrement(item.id)}
+            aria-label="Increment item quantity"
+          >
             +
           </button>
         </div>
@@ -45,6 +53,6 @@ export default function CartItem({
       >
         <IoCloseOutline />
       </button>
-    </div>
+    </li>
   );
 }

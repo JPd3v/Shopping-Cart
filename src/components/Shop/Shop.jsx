@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import ShopListItem from './ShopListItem';
+import ShopListItem from '../ShopListItem/ShopListItem';
 
 export default function Shop() {
   const [items, setItems] = useState([]);
@@ -14,12 +14,14 @@ export default function Shop() {
   }, []);
 
   return (
-    <div className="items-container">
-      {items.map((item) => (
-        <div key={item.id} className="item">
-          <ShopListItem item={item} />
-        </div>
-      ))}
-    </div>
+    <main>
+      <div className="items-container">
+        {items.map((item) => (
+          <div key={item.id} className="item">
+            <ShopListItem item={item} />
+          </div>
+        ))}
+      </div>
+    </main>
   );
 }

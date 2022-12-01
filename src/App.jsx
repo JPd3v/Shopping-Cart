@@ -1,10 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
 import { useState } from 'react';
-import Header from './components/Header';
-import Home from './components/Home';
-import Shop from './components/Shop';
-import ItemDetails from './components/ItemDetails';
+import Header from './components/Header/Header';
+import Home from './components/Home/Home';
+import Shop from './components/Shop/Shop';
+import ItemDetails from './components/ItemDetails/ItemDetails';
 
 function App() {
   const [cartItems, setCartItems] = useState([]);
